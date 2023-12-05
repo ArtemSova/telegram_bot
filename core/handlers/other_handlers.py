@@ -12,7 +12,7 @@ from core.lexicon.lexicon_ru import LEXICON_MENU, LEXICON_INLINE
 router: Router = Router()
 # Отображение кнопок, create_key(количество кнопок в строке(линии), источник кнопок)
 keyboard_start = create_key(2, **LEXICON_MENU)
-keyboard_inline = create_inline_key(3, **LEXICON_INLINE)
+keyboard_inline = create_inline_key(2, 'Some Site', **LEXICON_INLINE)
 
 # Создаем базу данных пользователей
 user_dict: dict[int, dict[str, str | int | bool]] = {}
@@ -92,4 +92,7 @@ async def anceta_step_four(message: Message, state: FSMContext):
                              f'Номер телефона: {user_dict[message.from_user.id]["phone"]}')
     else:
         await message.answer(f'Ваша анкета не заполнена', reply_markup=keyboard_start)
+
+
+
 
