@@ -7,6 +7,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from core.keyboards.keyboards import create_key, create_inline_key
 from core.lexicon.lexicon_ru import LEXICON_MENU, LEXICON_INLINE
+from config_db.users_db import SQL
 
 
 router: Router = Router()
@@ -25,6 +26,8 @@ class FSMFillForm(StatesGroup):
 # Реакция на кнопку старт или команду "\start"
 @router.message(CommandStart())
 async def process_start_command(message: Message):
+    s = SQL()
+    s.INSERT(message.from_user.id, message.from_user.first_name, message.from_user.username)
     # Ответное приветствие и отображение кнопок из keyboard_start
     await message.answer(f'Привет, {message.from_user.first_name}!', reply_markup=keyboard_start)
 
@@ -47,6 +50,19 @@ async def inline_button_1(callback: CallbackQuery):
         await callback.message.edit_text('Нажата первая кнопка', reply_markup=keyboard_inline)
     except:
         await callback.answer('Первая кнопка уже нажата', reply_markup=keyboard_inline)
+
+# Реакция на кнопку "Моя анкета"
+# @router.callback_query(F.data == '2')
+# async def inline_button_1(callback: CallbackQuery):
+#         try:
+#             await callback.edit_text(f'Ваша анкета:\n'
+#                                  f'Имя: {user_dict[callback.from_user.id]["name"]}\n'
+#                                  f'Возраст: {user_dict[callback.from_user.id]["age"]}\n'
+#                                  f'Номер телефона: {user_dict[callback.from_user.id]["phone"]}',
+#                                  reply_markup=keyboard_inline)
+#         except:
+#             await callback.message.edit_text(f'Ваша анкета не заполнена')
+
 
 
 # Реакция на кнопку "Заполнить анкету"
@@ -89,7 +105,8 @@ async def anceta_step_four(message: Message, state: FSMContext):
         await message.answer(f'Ваша анкета:\n'
                              f'Имя: {user_dict[message.from_user.id]["name"]}\n'
                              f'Возраст: {user_dict[message.from_user.id]["age"]}\n'
-                             f'Номер телефона: {user_dict[message.from_user.id]["phone"]}')
+                             f'Номер телефона: {user_dict[message.from_user.id]["phone"]}',
+                             reply_markup=keyboard_start)
     else:
         await message.answer(f'Ваша анкета не заполнена', reply_markup=keyboard_start)
 

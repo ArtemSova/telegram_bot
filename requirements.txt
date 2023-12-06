@@ -2,3 +2,5 @@ aiogram
 environs
 aioschedule
 apscheduler
+sqlalchemy
+psycopg2
