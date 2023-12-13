@@ -7,10 +7,12 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from core.keyboards.keyboards import create_key, create_inline_key
 from core.lexicon.lexicon_ru import LEXICON_MENU, LEXICON_INLINE
-from config_db.users_db import SQL
+from config_db.users_db import UsersSQL
 
 
+# Создание роутера
 router: Router = Router()
+
 # Отображение кнопок, create_key(количество кнопок в строке(линии), источник кнопок)
 keyboard_start = create_key(2, **LEXICON_MENU)
 keyboard_inline = create_inline_key(2, 'Some Site', **LEXICON_INLINE)
@@ -26,8 +28,10 @@ class FSMFillForm(StatesGroup):
 # Реакция на кнопку старт или команду "\start"
 @router.message(CommandStart())
 async def process_start_command(message: Message):
-    s = SQL()
-    s.INSERT(message.from_user.id, message.from_user.first_name, message.from_user.username)
+    # Создаем базу данных
+    s = UsersSQL()
+    # Добавляем пользователей в БД
+    s.insert(message.from_user.id, message.from_user.first_name, message.from_user.username)
     # Ответное приветствие и отображение кнопок из keyboard_start
     await message.answer(f'Привет, {message.from_user.first_name}!', reply_markup=keyboard_start)
 
@@ -50,6 +54,7 @@ async def inline_button_1(callback: CallbackQuery):
         await callback.message.edit_text('Нажата первая кнопка', reply_markup=keyboard_inline)
     except:
         await callback.answer('Первая кнопка уже нажата', reply_markup=keyboard_inline)
+
 
 # Реакция на кнопку "Моя анкета"
 # @router.callback_query(F.data == '2')

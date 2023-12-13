@@ -4,11 +4,11 @@ from datetime import datetime
 import asyncio
 import logging
 
-
 from core.config_data.config import Config, load_config
 from core.handlers import other_handlers
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from core.time_message import time_message_1
+from time_message import time_message_1, today_holiday
+
 
 
 # Инииализация логгера
@@ -26,7 +26,6 @@ async def main() -> None:
     # Выводим в консоль информацию о начале запуска
     logger.info('Bot started')
 
-
     # Загружаем конфигурации в переменную config
     config: Config = load_config()
 
@@ -35,10 +34,16 @@ async def main() -> None:
     dp: Dispatcher = Dispatcher()
 
     #Сообщения по-расписанию
-    scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
-    # corn - раз в сутки
-    scheduler.add_job(time_message_1, trigger='cron', hour=12, minute=12, start_date=datetime.now(), kwargs={'bot': bot})
-    scheduler.start()
+    # scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
+    # # corn - раз в сутки
+    # scheduler.add_job(time_message_1, trigger='cron', hour=20, minute=39, start_date=datetime.now(), kwargs={'bot': bot})
+    # scheduler.start()
+
+    # Сообщение о ежедневном празднике
+    selebrate = AsyncIOScheduler(timezone='Europe/Moscow')
+    selebrate.add_job(today_holiday, trigger='cron', hour=20, minute=19, start_date=datetime.now(), kwargs={'bot': bot})
+    selebrate.start()
+
 
     # Регистрируем роутеры в диспетчере
     dp.include_router(other_handlers.router)

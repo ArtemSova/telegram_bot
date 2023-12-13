@@ -8,6 +8,9 @@ from environs import Env
 class TgBot:
     bot_token: str
 
+@dataclass
+class Group:
+    group_id: int
 
 @dataclass
 class DatabaseConfig:
@@ -21,6 +24,7 @@ class DatabaseConfig:
 class Config:
     tg_bot: TgBot
     db: DatabaseConfig
+    group: Group
 
 
 def load_config(path: str | None = None) -> Config:
@@ -36,6 +40,9 @@ def load_config(path: str | None = None) -> Config:
             db_host=env.str('DB_HOST'),
             db_user=env.str('DB_USER'),
             db_password=env.str('DB_PASSWORD'),
+        ),
+        group=Group(
+            group_id=env.int('GROUP_ID')
         )
     )
 

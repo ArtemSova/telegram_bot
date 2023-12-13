@@ -19,9 +19,19 @@ users = Table(
     Column('user_id', Integer(), unique=True, nullable=False),
     Column('first_name', String(64), nullable=False),
     Column('user_name', String(64), unique=True, nullable=False),
+    Column('coins', Integer(), default=100),
     Column('is_admin', Boolean(), default=False),
     Column('is_block', Boolean(), default=False),
     Column('create_user_date', DateTime(), default=datetime.now()),
+)
+
+daily_holiday = Table(
+    'daily_holiday',
+    metadata,
+    Column('id', Integer(), primary_key=True),
+    Column('day', Integer(), nullable=False),
+    Column('month', Integer(), nullable=False),
+    Column('holiday', Text(), nullable=False),
 )
 
 

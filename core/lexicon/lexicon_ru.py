@@ -1,11 +1,8 @@
 # Список кнопок
 LEXICON_MENU: dict[str, str] = {
     'k_list': 'Список кнопок',
-    'say_hi': 'Заполнить анкету',
-}
-
-LEXICON_TIME: dict[str, str] = {
-    'mes_1': 'Сообщение раз в сутки по-расписанию'
+    'add_questionnaire': 'Заполнить анкету',
+    'my_questionnaire': 'Моя анкета'
 }
 
 LEXICON_INLINE: dict[str, str] = {
@@ -13,4 +10,9 @@ LEXICON_INLINE: dict[str, str] = {
     '2': 'Моя анкета',
     '3': 'Третья кнопка',
 }
+
+LEXICON_TIME: dict[str, str] = {
+    'mes_1': 'Сообщение раз в сутки по-расписанию'
+}
+
 
