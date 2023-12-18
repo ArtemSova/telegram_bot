@@ -30,10 +30,6 @@ class FSMFNewBoardGame(StatesGroup):
 async def keys_list(message: Message):
     await message.answer('Меню настольных игр', reply_markup=board_games_menu_kb)
 
-@router.message(F.text == 'Выбрать настольную игру')
-async def keys_list(message: Message):
-    n = random.choice((BoardGamesSQL().board_games_select())[0])
-    await message.answer(f'<b>Сегодня играйте в:</b> {n}', reply_markup=board_games_menu_kb)
 
 @router.message(F.text == 'Игры в коллекции участников')
 async def keys_list(message: Message):

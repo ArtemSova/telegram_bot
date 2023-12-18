@@ -10,7 +10,7 @@ from core.config_data.config import Config, load_config
 SQLite
 """
 # Подключение к серверу
-engine = create_engine('sqlite:///F:\\Python\\telegram_bot\\tg_bot_SQLite.db')
+engine = create_engine('sqlite:///F:\\Python\\telegram_bot_new\\tg_bot_SQLite.db')
 engine.connect()
 metadata = MetaData()
 
@@ -31,8 +31,8 @@ daily_holiday = Table(
     'daily_holiday',
     metadata,
     Column('id', Integer(), primary_key=True),
-    Column('day', Integer(), nullable=False),
     Column('month', Integer(), nullable=False),
+    Column('day', Integer(), nullable=False),
     Column('holiday', Text(), nullable=False),
 )
 
@@ -42,6 +42,7 @@ board_games = Table(
     Column('id', Integer(), primary_key=True),
     Column('game', String(64), unique=True, nullable=False),
 )
+
 
 
 """

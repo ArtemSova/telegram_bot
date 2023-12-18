@@ -22,18 +22,3 @@ new_board_games_kb = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
-
-# настроенное меню сайтов покупки новых игр???
-# def new_board_games_kb():
-#     items = [
-#         'Hobby Games', 'Чей Ход', 'Crow Games',
-#         'Стиль жизни', 'Мосигра', 'Лавка Игр', 'ZVEZDA',
-#     ]
-#
-#     builder = ReplyKeyboardBuilder()
-#     [builder.button(text=item) for item in items]
-#     builder.button(text='НАЗАД 🔙')
-#     builder.adjust(3, 4)
-#
-#
-#     return builder.as_markup(resize_keyboard=True, one_time_keyboard=True, selective=True)

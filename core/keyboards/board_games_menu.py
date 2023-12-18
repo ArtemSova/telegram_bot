@@ -22,3 +22,4 @@ board_games_menu_kb = ReplyKeyboardMarkup(
     selective=True
 )
 
+

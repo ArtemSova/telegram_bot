@@ -28,8 +28,8 @@ async def process_start_command(message: Message):
         s.insert(message.from_user.id, message.from_user.first_name, message.from_user.username)
     except:
         pass
-    # Ответное приветствие и отображение кнопок из keyboard_start
-    await message.answer(f'Вот ты где, {message.from_user.first_name}! Давай поиграем!', reply_markup=main_menu_kb)
+    # Ответное приветствие и отображение кнопок из keyboard_start c gif
+    await message.answer_animation(animation=config.photo_url.saw, caption=f'Вот ты где, {message.from_user.first_name}! Давай поиграем!', reply_markup=main_menu_kb)
 
 # Реакция на кнопки "НАЗАД"
 @router.message(F.text == 'ГЛАВНОЕ МЕНЮ 🔙')

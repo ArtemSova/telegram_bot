@@ -1,6 +1,7 @@
+import random
+
 from sqlalchemy import insert, select, update, delete, table, column
 from sqlalchemy.orm import Session
-from datetime import datetime
 
 from config_db.base_model import engine, board_games
 
@@ -25,4 +26,4 @@ class BoardGamesSQL:
         return self.session.execute(sel).fetchall()
 
 
-# print(BoardGamesSQL().board_games_select())
+# print(random.choice(BoardGamesSQL().board_games_select(5)))

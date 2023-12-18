@@ -23,6 +23,19 @@ class DatabaseConfig:
     db_user: str
     db_password: str
 
+@dataclass
+class photo_url:
+    saw: str
+    start_photo: str
+    bbq: str
+    open_air: str
+    manchkin: str
+    helloween: str
+    bar: str
+    weekend: str
+    color_party: str
+    utrennik: str
+
 
 @dataclass
 class Config:
@@ -30,6 +43,7 @@ class Config:
     db: DatabaseConfig
     group: Group
     admin: Admin
+    photo_url: photo_url
 
 
 def load_config(path: str | None = None) -> Config:
@@ -51,6 +65,18 @@ def load_config(path: str | None = None) -> Config:
         ),
         admin=Admin(
             admin_id=env.int('ADMIN_ID')
+        ),
+        photo_url=photo_url(
+            saw=env.str('saw'),
+            start_photo=env.str('start_photo'),
+            bbq=env.str('bbq'),
+            open_air=env.str('open_air'),
+            manchkin=env.str('manchkin'),
+            helloween=env.str('helloween'),
+            bar=env.str('bar'),
+            weekend=env.str('weekend'),
+            color_party=env.str('color_party'),
+            utrennik=env.str('utrennik'),
         )
     )
 

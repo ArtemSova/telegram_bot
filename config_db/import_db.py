@@ -385,5 +385,7 @@ def holiday_db_fill():
     HolidaySQL().holidays(12, 30, 'День рождения Паши и Леши!!!')
     HolidaySQL().holidays(12, 31, 'Новый год!!!')
 
-# board_games_db_fill()
+
+board_games_db_fill()
 # holiday_db_fill()
+

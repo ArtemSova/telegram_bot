@@ -4,15 +4,15 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 main_menu_kb = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Моя анкета'),
-            KeyboardButton(text='Заполнить\изменить анкету')
+            KeyboardButton(text='Моя анкета 📜'),
+            KeyboardButton(text='Заполнить\изменить анкету 🖌')
         ],
         [
-            KeyboardButton(text='Специальные кнопки'),
-            KeyboardButton(text='Игры')
+            # KeyboardButton(text='Специальные кнопки'),
+            KeyboardButton(text='Игры 🃏')
         ],
         [
-            KeyboardButton(text='Отчеты')
+            KeyboardButton(text='Отчеты 📸')
         ]
     ],
     resize_keyboard=True,

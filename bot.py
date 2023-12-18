@@ -44,7 +44,7 @@ async def main() -> None:
 
     # Сообщения о ежедневном празднике
     selebrate = AsyncIOScheduler(timezone='Europe/Moscow')
-    selebrate.add_job(today_holiday, trigger='cron', hour=20, minute=19, start_date=datetime.now(), kwargs={'bot': bot})
+    selebrate.add_job(today_holiday, trigger='cron', hour=8, minute=38, start_date=datetime.now(), kwargs={'bot': bot})
     selebrate.start()
 
     # Пропускаем накопившиеся апдейты и запускаем polling

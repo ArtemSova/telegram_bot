@@ -12,6 +12,6 @@ async def time_message_1(bot: Bot):
 
 
 async def today_holiday(bot: Bot):
-    await bot.send_message(config.group.group_id, f'Сегодня празднуем {HolidaySQL().holidays_select()} Бухаем или играем?')
+    await bot.send_message(config.group.group_id, f'🗓 Сегодня празднуем {HolidaySQL().holidays_select()} Бухаем или играем?        🍾/🎲')
 
 

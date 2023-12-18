@@ -8,14 +8,14 @@ from config_db.base_model import engine, daily_holiday
 class HolidaySQL:
     session = Session(engine)
 
-    def holidays(self, day: int, month: int, holiday: str):
+    def holidays(self, month: int, day: int, holiday: str):
         """
         Добавляем праздники в БД
         """
 
         ins = insert(daily_holiday).values(
-            day=day,
             month=month,
+            day=day,
             holiday=holiday,
         )
 
@@ -36,7 +36,7 @@ class HolidaySQL:
         return self.session.execute(sel).fetchall()[0][0]
 
 
-
+# print(HolidaySQL().holidays_select())
 
 
 

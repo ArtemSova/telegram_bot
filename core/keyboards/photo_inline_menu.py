@@ -24,7 +24,7 @@ def create_inline_key(width: int, button_site: str | None = None, *args: str, **
 
     # добавление кнопки "Ищешь игру?", указанной в "other_handlers.py" с переходом на сайт внутри телеграм (БЕЗ РОУТЕРА В other_handlers.py)
     if button_site:
-        kb = InlineKeyboardButton(text=button_site, web_app=WebAppInfo(url='https://market.yandex.ru/brands--hobby-world/10829828'))
+        kb = InlineKeyboardButton(text=button_site, web_app=WebAppInfo(url='https://dzen.ru/a/ZIFNR21BgnT5jeXI'))
         kb_builder.row(kb)
 
     return kb_builder.as_markup(resize_keyboard=True, selective=True)

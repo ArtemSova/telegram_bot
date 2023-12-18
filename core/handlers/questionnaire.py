@@ -23,7 +23,7 @@ class FSMFillForm(StatesGroup):
 
 
 # Реакция на кнопку "Моя анкета"
-@router.message(F.text == "Моя анкета")
+@router.message(F.text == "Моя анкета 📜")
 async def my_questionnaire(message: Message):
     await message.answer(f'Ваша анкета: \n'
                          f'<b>user_name:</b> {UsersSQL().select_user_info(message.from_user.id)[0][0]}\n'
@@ -35,7 +35,7 @@ async def my_questionnaire(message: Message):
                          )
 
 # Реакция на кнопку "Заполнить\изменить анкету"
-@router.message(F.text == "Заполнить\изменить анкету")
+@router.message(F.text == "Заполнить\изменить анкету 🖌")
 async def anceta_step_one(message: Message, state: FSMContext):
     await message.answer('Введите свое имя. Можно Ф.И.О')
     # Устанавливаем состояние ожидания ввода имени
