@@ -1,6 +1,5 @@
 from sqlalchemy import insert, select, update, delete, table, column
 from sqlalchemy.orm import Session
-from aiogram import Bot
 from datetime import datetime
 
 from config_db.base_model import engine, daily_holiday
@@ -35,6 +34,8 @@ class HolidaySQL:
 
 
         return self.session.execute(sel).fetchall()[0][0]
+
+
 
 
 

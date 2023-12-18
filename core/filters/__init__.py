@@ -1,0 +1,1 @@
+from . import is_digit_or_float, is_admin

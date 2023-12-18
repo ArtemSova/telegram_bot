@@ -5,7 +5,7 @@ import asyncio
 import logging
 
 from core.config_data.config import Config, load_config
-from core.handlers import other_handlers
+from core.handlers import questionnaire, add_board_game, user_commands, bot_messages, games_menu, inline_routers
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from time_message import time_message_1, today_holiday
 
@@ -33,20 +33,19 @@ async def main() -> None:
     bot: Bot = Bot(token=config.tg_bot.bot_token, parse_mode='HTML')
     dp: Dispatcher = Dispatcher()
 
+    # Регистрируем роутеры в диспетчере
+    dp.include_routers(user_commands.router, add_board_game.router, questionnaire.router, games_menu.router, inline_routers.router, bot_messages.router)
+
     #Сообщения по-расписанию
     # scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
     # # corn - раз в сутки
     # scheduler.add_job(time_message_1, trigger='cron', hour=20, minute=39, start_date=datetime.now(), kwargs={'bot': bot})
     # scheduler.start()
 
-    # Сообщение о ежедневном празднике
+    # Сообщения о ежедневном празднике
     selebrate = AsyncIOScheduler(timezone='Europe/Moscow')
     selebrate.add_job(today_holiday, trigger='cron', hour=20, minute=19, start_date=datetime.now(), kwargs={'bot': bot})
     selebrate.start()
-
-
-    # Регистрируем роутеры в диспетчере
-    dp.include_router(other_handlers.router)
 
     # Пропускаем накопившиеся апдейты и запускаем polling
     await bot.delete_webhook(drop_pending_updates=True)

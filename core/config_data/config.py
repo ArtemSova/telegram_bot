@@ -10,7 +10,11 @@ class TgBot:
 
 @dataclass
 class Group:
-    group_id: int
+    group_id: str
+
+@dataclass
+class Admin:
+    admin_id: int
 
 @dataclass
 class DatabaseConfig:
@@ -25,6 +29,7 @@ class Config:
     tg_bot: TgBot
     db: DatabaseConfig
     group: Group
+    admin: Admin
 
 
 def load_config(path: str | None = None) -> Config:
@@ -42,7 +47,10 @@ def load_config(path: str | None = None) -> Config:
             db_password=env.str('DB_PASSWORD'),
         ),
         group=Group(
-            group_id=env.int('GROUP_ID')
+            group_id=env.str('GROUP_ID')
+        ),
+        admin=Admin(
+            admin_id=env.int('ADMIN_ID')
         )
     )
 
