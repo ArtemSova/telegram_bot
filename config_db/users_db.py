@@ -29,6 +29,15 @@ class UsersSQL:
         self.session.execute(upd)
         self.session.commit()
 
+    def coins_count(self, user_id: int):
+        sel = select(users.c.coins).where(users.c.user_id == user_id)
+        return self.session.execute(sel).fetchall()
+
+    def change_coins(self, user_id: int, coins: int):
+        upd = update(users).where(users.c.user_id == user_id).values(coins=coins)
+        self.session.execute(upd)
+        self.session.commit()
+
     def select_user_info(self, user_id: int):
         """
         Забираем id пользователей из БД
@@ -38,9 +47,3 @@ class UsersSQL:
 
         return self.session.execute(sel).fetchall()
 
-# UsersSQL().update_user_info(329725203, 'Артем', '07.05.1989', '+7(999)999-99-99')
-# print(f'user_name: {UsersSQL().select_user_info(329725203)[0][0]}')
-# print(f'Имя: {UsersSQL().select_user_info(329725203)[0][1]}')
-# print(f'День рождения: {UsersSQL().select_user_info(329725203)[0][2]}')
-# print(f'Телефон: {UsersSQL().select_user_info(329725203)[0][3]}')
-# print(f'Монеты: {UsersSQL().select_user_info(329725203)[0][4]}')

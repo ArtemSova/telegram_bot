@@ -5,7 +5,7 @@ import asyncio
 import logging
 
 from core.config_data.config import Config, load_config
-from core.handlers import questionnaire, add_board_game, user_commands, bot_messages, games_menu, inline_routers
+from core.handlers import *
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from time_message import time_message_1, today_holiday
 
@@ -34,7 +34,8 @@ async def main() -> None:
     dp: Dispatcher = Dispatcher()
 
     # Регистрируем роутеры в диспетчере
-    dp.include_routers(user_commands.router, add_board_game.router, questionnaire.router, games_menu.router, inline_routers.router, bot_messages.router)
+    dp.include_routers(user_commands.router, add_board_game.router, guess.router, questionnaire.router, games_menu.router,
+                       inline_routers.router, bot_messages.router)
 
     #Сообщения по-расписанию
     # scheduler = AsyncIOScheduler(timezone='Europe/Moscow')

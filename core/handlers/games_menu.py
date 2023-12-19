@@ -39,3 +39,4 @@ async def keys_list(message: Message):
 @router.message(F.text == 'Новая настольная игра')
 async def keys_list(message: Message):
     await message.answer(f'Выбирай', reply_markup=new_board_games_kb)
+

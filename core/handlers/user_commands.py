@@ -36,6 +36,6 @@ async def process_start_command(message: Message):
 async def keys_list(message: Message):
     await message.answer('Основное меню', reply_markup=main_menu_kb)
 
-@router.message(F.text == 'Специальные кнопки', IsAdmin(config.admin.admin_id))
-async def keys_list(message: Message):
-    await message.answer('спацеальные кнопки', reply_markup=spec_kb)
+# @router.message(F.text == 'Специальные кнопки', IsAdmin(config.admin.admin_id))
+# async def keys_list(message: Message):
+#     await message.answer('спацеальные кнопки', reply_markup=spec_kb)

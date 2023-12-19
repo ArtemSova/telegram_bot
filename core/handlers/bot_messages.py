@@ -13,6 +13,8 @@ async def echo(message: Message):
 
     if msg == 'игры 🃏':
         await message.answer('Игры', reply_markup=games_menu_kb.games_menu_kb)
+    elif msg == 'игры бота':
+        await message.answer('В игре "Угадайка! можно заработать монеты, если победишь"', reply_markup=games_menu_kb.bot_game_kb)
     # elif msg == 'специальные кнопки':
     #     await message.answer('Спец. кнопки', reply_markup=special.spec_kb)
     elif msg == "главное меню 🔙":

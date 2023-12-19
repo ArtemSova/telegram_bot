@@ -17,3 +17,16 @@ games_menu_kb = ReplyKeyboardMarkup(
     one_time_keyboard=True,
     selective=True
 )
+
+# Клавиатура меню игр бота
+bot_game_kb = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text='Угадайка! ❓❓❓'),
+        ],
+        [
+            KeyboardButton(text='ГЛАВНОЕ МЕНЮ 🔙'),
+        ]
+
+    ]
+)
