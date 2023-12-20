@@ -31,7 +31,7 @@
 6. Список сайтов (открывающихся сразу в ТГ), где покупаются настольные игры
 7. Две игры внутри бота для разнообразия
    + Угадайка: угадать случайно загаданное число (практика бинарного поиска)
-   + Однорукий бандит
+   + Однорукий бандит, с подсчетом оставшегося у игрока количества монет
 8. Админка с доп возможностями
    + Просмотр анкеты участника по "user_name" в телеграме
    + Добавление и уменьшение (не замена числа) монет участника по "user_name"
@@ -39,11 +39,16 @@
 
 
 ## Screenshots.
-![Image alt](https://github.com/ArtemSova/telegram_bot/raw/main/screenshots/main_menu.png)
-![Image alt](https://github.com/ArtemSova/telegram_bot/raw/main/screenshots/group_messages.png)
-![Image alt](https://github.com/ArtemSova/telegram_bot/raw/main/screenshots/inline_photos.png)
-![Image alt](https://github.com/ArtemSova/telegram_bot/raw/main/screenshots/bot_games.png)
-![Image alt](https://github.com/ArtemSova/telegram_bot/raw/main/screenshots/web_apps.png)
+Приветствие и анкета
+![Image alt](https://github.com/ArtemSova/telegram_bot/blob/master/screenshots/main_menu.png)
+Пример ежедневного сообщения бота в группу
+![Image alt](https://github.com/ArtemSova/telegram_bot/blob/master/screenshots/group_messages.png)
+Инлайн метод выбора изображений (фото, плакаты, схемы)
+![Image alt](https://github.com/ArtemSova/telegram_bot/blob/master/screenshots/inline_photo.png)
+Пример игры в однорукого бандита
+![Image alt](https://github.com/ArtemSova/telegram_bot/blob/master/screenshots/bot_games.png)
+Сайт, открытый по кнопке напрямую в телеграме
+![Image alt](https://github.com/ArtemSova/telegram_bot/blob/master/screenshots/web_apps.png)
 
 #### Пометки для автора
 
