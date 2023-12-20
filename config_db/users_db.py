@@ -38,12 +38,27 @@ class UsersSQL:
         self.session.execute(upd)
         self.session.commit()
 
+    def admin_change_coins(self, user_name: str, wallet: int, coins: int):
+        upd = update(users).where(users.c.user_name == user_name).values(coins=wallet + coins)
+        self.session.execute(upd)
+        self.session.commit()
+
     def select_user_info(self, user_id: int):
         """
         Забираем id пользователей из БД
         """
 
         sel = select(users.c.user_name, users.c.first_name, users.c.birthday, users.c.phone_number, users.c.coins).where(users.c.user_id == user_id)
+
+        return self.session.execute(sel).fetchall()
+
+    def admin_user_info(self, user_name: str):
+        """
+        Забираем id пользователей из БД
+        """
+
+        sel = select(users.c.user_id, users.c.user_name, users.c.first_name, users.c.birthday, users.c.phone_number,
+                     users.c.coins).where(users.c.user_name == user_name)
 
         return self.session.execute(sel).fetchall()
 

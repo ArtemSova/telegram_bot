@@ -22,9 +22,9 @@ config: Config = load_config()
 keyboard_inline = create_inline_key(2, 'Нужен повот потусить? 🥳', **LEXICON_INLINE)
 
 # Реакция на кнопку "Отчеты"
-@router.message(F.text == 'Отчеты 📸')
+@router.message(F.text == 'Выбирать фото')
 async def keys_list(message: Message):
-    await message.reply_photo(photo=config.photo_url.start_photo, caption='Я следил за вами', reply_markup=keyboard_inline)
+    await message.reply_photo(photo=config.photo_url.start_photo, caption='Выбирай', reply_markup=keyboard_inline)
 
 
 # Реакция на Первую кнопку LEXICON_INLINE
@@ -39,7 +39,7 @@ async def inline_button_1(callback: CallbackQuery):
 @router.callback_query(F.data == '2')
 async def inline_button_1(callback: CallbackQuery):
     try:
-        await callback.message.edit_media(InputMediaPhoto(media=config.photo_url.open_air, caption='Отдых на природе'),
+        await callback.message.edit_media(InputMediaPhoto(media=config.photo_url.open_air, caption='Летние игры'),
                                           reply_markup=keyboard_inline)
     except:
         await callback.answer('Выбери другое фото', reply_markup=keyboard_inline)

@@ -10,7 +10,7 @@ from core.config_data.config import Config, load_config
 SQLite
 """
 # Подключение к серверу
-engine = create_engine('sqlite:///F:\\Python\\telegram_bot_new\\tg_bot_SQLite.db')
+engine = create_engine('sqlite:///F:\\Python\\telegram_bot\\tg_bot_SQLite.db')
 engine.connect()
 metadata = MetaData()
 

@@ -1,1 +1,1 @@
-from . import is_digit_or_float, is_admin
+from . import is_admin

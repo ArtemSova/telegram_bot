@@ -17,7 +17,7 @@ class CheckGroupSubscription(BaseMiddleware):
         chat_member = await event.bot.get_chat_member(config.group.group_id, event.from_user.id)
 
         if chat_member.status == "left":
-            await event.answer("Ты не являешься участником группы. Если ты не знаешь что это за группа, то что ты тут делаешь?")
+            await event.answer('Ты не являешься участником группы. Если ты не знаешь что это за группа, то: <b>"Ты кто такой? Мы тебя не звали! Иди на хуй!"</b>')
         else:
             return await handler(event, data)
 
