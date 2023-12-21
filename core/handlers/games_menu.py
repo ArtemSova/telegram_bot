@@ -23,7 +23,7 @@ class FSMFNewBoardGame(StatesGroup):
     new_board_game = State()
 
 
-@router.message(F.text == 'Настольные игры')
+@router.message(F.text == 'Настольные игры 🧩')
 async def keys_list(message: Message, bot: Bot):
     await bot.send_message(message.from_user.id, 'Меню настольных игр', reply_markup=board_games_menu_kb)
 

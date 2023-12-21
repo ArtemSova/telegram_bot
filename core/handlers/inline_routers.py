@@ -19,7 +19,7 @@ config: Config = load_config()
 
 # Отображение клавиатур, create_key(количество кнопок в строке(линии), источник кнопок)
   # Добавлена доп кнопка для сайта ее логика в keyboards
-keyboard_inline = create_inline_key(2, 'Нужен повот потусить? 🥳', **LEXICON_INLINE)
+keyboard_inline = create_inline_key(2, 'Нужен повод потусить? 🥳', **LEXICON_INLINE)
 
 # Реакция на кнопку "Отчеты"
 @router.message(F.text == 'Выбирать фото')
@@ -55,7 +55,7 @@ async def inline_button_1(callback: CallbackQuery):
 @router.callback_query(F.data == '4')
 async def inline_button_1(callback: CallbackQuery):
     try:
-        await callback.message.edit_media(InputMediaPhoto(media=config.photo_url.helloween, caption='Halloween'),
+        await callback.message.edit_media(InputMediaPhoto(media=config.photo_url.helloween, caption='Halloween 🎃'),
                                           reply_markup=keyboard_inline)
     except:
         await callback.answer('Выбери другое фото', reply_markup=keyboard_inline)

@@ -18,7 +18,7 @@ async def echo(message: Message, bot: Bot):
     # СТОИТ ФИЛЬТР НА МАЛЕНЬКИЕ БУКВЫ!!! (изменить?)
     if msg == 'игры 🃏':
         await bot.send_message(message.from_user.id, f'Игры', reply_markup=games_menu_kb.games_menu_kb)
-    elif msg == 'игры бота':
+    elif msg == 'игры бота 🤖':
         await bot.send_message(message.from_user.id, 'В игре "Угадайка! можно заработать монеты, если победишь"', reply_markup=games_menu_kb.bot_game_kb)
     elif msg == 'ваши фотографии 📸':
         await bot.send_message(message.from_user.id, 'Я следил за вами. Как хотите смотреть фото?', reply_markup=photos_menu_kb.photos_menu_kb)

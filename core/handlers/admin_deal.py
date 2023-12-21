@@ -67,9 +67,9 @@ async def add_coins_step_two(message: Message, bot: Bot, state: FSMContext):
     # Устанавливаем состояние ожидания ввода возраста
     await state.set_state(FSMCoins.coins)
 
-@router.message(StateFilter(FSMCoins.coins), F.text.isdigit())
+@router.message(StateFilter(FSMCoins.coins))
 async def add_coins_step_three(message: Message, bot: Bot, state: FSMContext):
-    await state.update_data(coins=message.text)
+    await state.update_data(coins=int(message.text))
     coins_dict[message.from_user.id] = await state.get_data()
     wallet = UsersSQL().coins_count(message.from_user.id)[0][0]
     await bot.send_message(message.from_user.id, f'{coins_dict.get(message.from_user.id).get("user_name")}, {wallet}, {coins_dict.get(message.from_user.id).get("coins")}', reply_markup=admin_menu_kb)

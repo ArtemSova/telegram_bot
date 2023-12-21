@@ -6,7 +6,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder, 
 board_games_menu_kb = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Выбрать настольную игру'),
+            KeyboardButton(text='Выбрать настольную игру. 10 монет 🪙'),
             KeyboardButton(text='Игры в коллекции участников'),
         ],
         [

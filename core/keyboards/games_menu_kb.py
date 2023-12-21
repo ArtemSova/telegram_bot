@@ -6,8 +6,8 @@ from aiogram.utils.keyboard import ReplyKeyboardMarkup
 games_menu_kb = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Настольные игры'),
-            KeyboardButton(text='Игры бота'),
+            KeyboardButton(text='Настольные игры 🧩'),
+            KeyboardButton(text='Игры бота 🤖'),
         ],
         [
             KeyboardButton(text='ГЛАВНОЕ МЕНЮ 🔙'),
@@ -39,7 +39,7 @@ bot_game_kb = ReplyKeyboardMarkup(
 one_hand_kb = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text=f'🎰 Потратить 1 монету и крутить.'),
+            KeyboardButton(text=f'🎰 Потратить 1 монету 🪙 и крутить.'),
         ],
         [
             KeyboardButton(text='ГЛАВНОЕ МЕНЮ 🔙'),

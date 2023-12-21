@@ -9,6 +9,7 @@ import random
 from config_db.board_games import BoardGamesSQL
 from core.config_data.config import Config, load_config
 from core.keyboards.board_games_menu import board_games_menu_kb
+from config_db.users_db import UsersSQL
 from core.middlewares.check_group_sub import CheckGroupSubscription
 
 
@@ -43,9 +44,15 @@ async def anceta_step_two(message: Message, bot: Bot, state: FSMContext):
     await bot.send_message(message.from_user.id,'Настольная игра добавлена')
 
 
-@router.message(F.text == 'Выбрать настольную игру')
+@router.message(F.text == 'Выбрать настольную игру. 10 монет 🪙')
 async def keys_list(message: Message, bot: Bot):
     n = random.choice((BoardGamesSQL().board_games_select()))[0]
-    await bot.send_message(config.group.group_id, f'{message.from_user.first_name} попросил выбрать игру. Сегодня играйте в: <b>"{n}"</b> 🃏👾♟')
-    await bot.send_message(message.from_user.id, f'Игра выбрана и отправлена в группу', reply_markup=board_games_menu_kb)
+    wallet = int(UsersSQL().coins_count(message.from_user.id)[0][0])
+    if wallet >= 10:
+        coast = wallet - 10
+        UsersSQL().change_coins(message.from_user.id, int(coast))
+        await bot.send_message(config.group.group_id, f'{message.from_user.first_name} попросил выбрать игру. Сегодня играйте в: <b>"{n}"</b> 🃏👾♟')
+        await bot.send_message(message.from_user.id, f'Игра выбрана и отправлена в группу', reply_markup=board_games_menu_kb)
+    else:
+        await bot.send_message(message.from_user.id, 'У тебя нет монет. Сыграй в Угадайку', reply_markup=board_games_menu_kb)
 
